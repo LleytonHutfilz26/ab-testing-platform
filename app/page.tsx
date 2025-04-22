@@ -10,13 +10,13 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 
-// Import all mockup components
-import DashboardA from "@/app/mockups/dashboard-a/component"
-import DashboardB from "@/app/mockups/dashboard-b/component"
-import EcommerceC from "@/app/mockups/ecommerce-c/component"
-import EcommerceD from "@/app/mockups/ecommerce-d/component"
-import SocialE from "@/app/mockups/social-e/component"
-import SocialF from "@/app/mockups/social-f/component"
+// Dynamically import mockup components with no SSR
+const DashboardA = dynamic(() => import("@/app/mockups/dashboard-a/component"), { ssr: false })
+const DashboardB = dynamic(() => import("@/app/mockups/dashboard-b/component"), { ssr: false })
+const EcommerceC = dynamic(() => import("@/app/mockups/ecommerce-c/component"), { ssr: false })
+const EcommerceD = dynamic(() => import("@/app/mockups/ecommerce-d/component"), { ssr: false })
+const SocialE = dynamic(() => import("@/app/mockups/social-e/component"), { ssr: false })
+const SocialF = dynamic(() => import("@/app/mockups/social-f/component"), { ssr: false })
 
 // Mockup pairs configuration
 const MOCKUP_PAIRS = [
