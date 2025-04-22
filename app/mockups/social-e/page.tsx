@@ -1,5 +1,5 @@
-import SocialMockupE from "@/app/mockups/social-e/component"
+import SocialE from "./component"
 
 export default function Page() {
-  return <SocialMockupE />
+  return <SocialE />
 } 

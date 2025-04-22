@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Heart, MessageCircle, Share2, MoreHorizontal, Home, Search, Bell, User, Plus } from "lucide-react"
 
-export default function SocialMockupF() {
+export default function SocialF() {
   const [likes, setLikes] = useState<{ [key: string]: number }>({})
   const [comments, setComments] = useState<{ [key: string]: number }>({})
 

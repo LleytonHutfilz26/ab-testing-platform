@@ -1,5 +1,5 @@
-import SocialMockupF from "./component"
+import SocialF from "./component"
 
 export default function Page() {
-  return <SocialMockupF />
+  return <SocialF />
 } 
