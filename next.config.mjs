@@ -22,6 +22,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: 'export',
   basePath: '/ab-testing-platform',
   assetPrefix: '/ab-testing-platform/',
   trailingSlash: true,

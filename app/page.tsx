@@ -10,6 +10,14 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 
+// Import all mockup components
+import DashboardA from "@/app/mockups/dashboard-a/component"
+import DashboardB from "@/app/mockups/dashboard-b/component"
+import EcommerceC from "@/app/mockups/ecommerce-c/component"
+import EcommerceD from "@/app/mockups/ecommerce-d/component"
+import SocialE from "@/app/mockups/social-e/component"
+import SocialF from "@/app/mockups/social-f/component"
+
 // Mockup pairs configuration
 const MOCKUP_PAIRS = [
   {
@@ -31,6 +39,16 @@ const MOCKUP_PAIRS = [
     description: "Evaluate different social media feed layouts and interaction patterns"
   }
 ]
+
+// Mockup components mapping
+const MOCKUP_COMPONENTS = {
+  a: DashboardA,
+  b: DashboardB,
+  c: EcommerceC,
+  d: EcommerceD,
+  e: SocialE,
+  f: SocialF,
+}
 
 // Wrap the main component to handle hydration
 const TestingInterface = () => {
@@ -386,26 +404,16 @@ const TestingInterfaceContent = () => {
   const renderMockup = (variant: string) => {
     const currentTasks = getCurrentTasks()
     const activeTask = currentTasks.find(task => 
-      activeTaskId[variant.split('-').pop() || ''] === task.id
+      activeTaskId[variant] === task.id
     )
+    const MockupComponent = MOCKUP_COMPONENTS[variant as keyof typeof MOCKUP_COMPONENTS]
 
     return (
       <div className="flex-1 p-4">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <iframe
-            src={`/mockups/${variant.split('-').pop()}`}
-            className="w-full h-[600px] border-0"
-            onLoad={(e) => {
-              // Send current task information to iframe
-              const iframe = e.target as HTMLIFrameElement
-              if (activeTask) {
-                iframe.contentWindow?.postMessage({
-                  type: 'START_TASK',
-                  taskId: activeTask.id
-                }, '*')
-              }
-            }}
-          />
+          <div className="w-full h-[600px]">
+            <MockupComponent />
+          </div>
         </div>
       </div>
     )
