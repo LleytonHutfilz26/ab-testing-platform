@@ -204,43 +204,45 @@ const TestingInterfaceContent = () => {
 
   // Update the startTask function to track the active task
   const startTask = (taskId: string, variant: string) => {
+    const variantKey = variant.split('-').pop() || ''
     setStartTime({
       ...startTime,
-      [variant]: Date.now(),
+      [variantKey]: Date.now(),
     })
     setActiveTaskId({
       ...activeTaskId,
-      [variant]: taskId,
+      [variantKey]: taskId,
     })
   }
 
   // Update the completeTask function to clear the active task
   const completeTask = (taskId: string, variant: string) => {
-    const variantCompletedTasks = completedTasks[variant] || []
+    const variantKey = variant.split('-').pop() || ''
+    const variantCompletedTasks = completedTasks[variantKey] || []
     
-    if (!variantCompletedTasks.includes(taskId) && activeTaskId[variant] === taskId) {
+    if (!variantCompletedTasks.includes(taskId) && activeTaskId[variantKey] === taskId) {
       const newCompletedTasks = {
         ...completedTasks,
-        [variant]: [...variantCompletedTasks, taskId],
+        [variantKey]: [...variantCompletedTasks, taskId],
       }
       setCompletedTasks(newCompletedTasks)
       
-      if (startTime[variant]) {
-        const timeElapsed = Math.floor((Date.now() - startTime[variant]!) / 1000)
+      if (startTime[variantKey]) {
+        const timeElapsed = Math.floor((Date.now() - startTime[variantKey]!) / 1000)
         setTaskTimes({
           ...taskTimes,
-          [variant]: {
-            ...(taskTimes[variant] || {}),
+          [variantKey]: {
+            ...(taskTimes[variantKey] || {}),
             [taskId]: timeElapsed,
           },
         })
         setStartTime({
           ...startTime,
-          [variant]: null,
+          [variantKey]: null,
         })
         setActiveTaskId({
           ...activeTaskId,
-          [variant]: null,
+          [variantKey]: null,
         })
       }
     }
@@ -384,14 +386,14 @@ const TestingInterfaceContent = () => {
   const renderMockup = (variant: string) => {
     const currentTasks = getCurrentTasks()
     const activeTask = currentTasks.find(task => 
-      activeTaskId[variant] === task.id
+      activeTaskId[variant.split('-').pop() || ''] === task.id
     )
 
     return (
       <div className="flex-1 p-4">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <iframe
-            src={`/mockups/${variant}`}
+            src={`/mockups/${variant.split('-').pop()}`}
             className="w-full h-[600px] border-0"
             onLoad={(e) => {
               // Send current task information to iframe
