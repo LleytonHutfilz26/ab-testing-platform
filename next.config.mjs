@@ -22,6 +22,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: 'export',
+  basePath: process.env.NODE_ENV === 'production' ? '/ab-testing-platform' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/ab-testing-platform/' : '',
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
