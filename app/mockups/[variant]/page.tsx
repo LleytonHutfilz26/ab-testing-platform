@@ -4,12 +4,12 @@ import { useParams } from "next/navigation"
 import dynamic from "next/dynamic"
 
 // Dynamically import mockup components
-const DashboardA = dynamic(() => import("@/app/mockups/dashboard-a/page"), { ssr: false })
-const DashboardB = dynamic(() => import("@/app/mockups/dashboard-b/page"), { ssr: false })
-const EcommerceC = dynamic(() => import("@/app/mockups/ecommerce-c/page"), { ssr: false })
-const EcommerceD = dynamic(() => import("@/app/mockups/ecommerce-d/page"), { ssr: false })
-const SocialE = dynamic(() => import("@/app/mockups/social-e/page"), { ssr: false })
-const SocialF = dynamic(() => import("@/app/mockups/social-f/page"), { ssr: false })
+const DashboardA = dynamic(() => import("@/app/mockups/dashboard-a/component"), { ssr: false })
+const DashboardB = dynamic(() => import("@/app/mockups/dashboard-b/component"), { ssr: false })
+const EcommerceC = dynamic(() => import("@/app/mockups/ecommerce-c/component"), { ssr: false })
+const EcommerceD = dynamic(() => import("@/app/mockups/ecommerce-d/component"), { ssr: false })
+const SocialE = dynamic(() => import("@/app/mockups/social-e/component"), { ssr: false })
+const SocialF = dynamic(() => import("@/app/mockups/social-f/component"), { ssr: false })
 
 const MOCKUP_COMPONENTS = {
   a: DashboardA,
@@ -29,5 +29,9 @@ export default function MockupPage() {
     return <div>Mockup not found</div>
   }
 
-  return <MockupComponent />
+  return (
+    <div className="w-full h-full">
+      <MockupComponent />
+    </div>
+  )
 } 
