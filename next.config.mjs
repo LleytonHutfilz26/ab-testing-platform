@@ -23,8 +23,9 @@ const nextConfig = {
     unoptimized: true,
   },
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/ab-testing-platform' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/ab-testing-platform/' : '',
+  basePath: '/ab-testing-platform',
+  assetPrefix: '/ab-testing-platform/',
+  trailingSlash: true,
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
