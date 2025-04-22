@@ -4,12 +4,12 @@ import { useParams } from "next/navigation"
 import dynamic from "next/dynamic"
 
 // Dynamically import mockup components
-const DashboardA = dynamic(() => import("../dashboard-a/page"), { ssr: false })
-const DashboardB = dynamic(() => import("../dashboard-b/page"), { ssr: false })
-const EcommerceC = dynamic(() => import("../ecommerce-c/page"), { ssr: false })
-const EcommerceD = dynamic(() => import("../ecommerce-d/page"), { ssr: false })
-const SocialE = dynamic(() => import("../social-e/page"), { ssr: false })
-const SocialF = dynamic(() => import("../social-f/page"), { ssr: false })
+const DashboardA = dynamic(() => import("@/app/mockups/dashboard-a/page"), { ssr: false })
+const DashboardB = dynamic(() => import("@/app/mockups/dashboard-b/page"), { ssr: false })
+const EcommerceC = dynamic(() => import("@/app/mockups/ecommerce-c/page"), { ssr: false })
+const EcommerceD = dynamic(() => import("@/app/mockups/ecommerce-d/page"), { ssr: false })
+const SocialE = dynamic(() => import("@/app/mockups/social-e/page"), { ssr: false })
+const SocialF = dynamic(() => import("@/app/mockups/social-f/page"), { ssr: false })
 
 const MOCKUP_COMPONENTS = {
   a: DashboardA,
